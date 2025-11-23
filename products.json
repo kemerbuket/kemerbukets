@@ -1,12 +1,12 @@
 [
   {
-    "id": "sevgililer-buketi",
-    "price": 450.00,
+    "id": "gul-01",
+    "price": 1500.00,
     "url": "/products.json"
   },
   {
-    "id": "arkadaslar-buketi",
-    "price": 520.00,
+    "id": "gul-02",
+    "price": 1200.00,
     "url": "/products.json"
   },
   {
