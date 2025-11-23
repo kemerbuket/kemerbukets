@@ -210,7 +210,8 @@
             btn.dataset.itemId = product.id;
             btn.dataset.itemName = product.name;
             btn.dataset.itemPrice = product.price; // Snipcart baz fiyatı
-            btn.dataset.itemUrl = "https://bespoke-tarsier-e8ee87.netlify.app/products.json"; // Snipcart doğrulama URL'si
+            // Bu adres Netlify'daki robotumuzun adresidir
+            btn.dataset.itemUrl = "/.netlify/functions/products"; // Snipcart doğrulama URL'si
             btn.dataset.itemImage = product.image;
             btn.dataset.itemDescription = product.description;
 
