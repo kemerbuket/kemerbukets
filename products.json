@@ -1,45 +1,47 @@
 [
-
-   
-
   {
-    "id": "gul-01",
-    "price": 1500.00,
-    "url": "/products.json"
+    "id": "test-urun-01",
+    "price": 1.00,
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   },
   {
-    "id": "gul-02",
-    "price": 1200.00,
-    "url": "/products.json"
+    "id": "sevgililer-buketi",
+    "price": 450.00,
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
+  },
+  {
+    "id": "arkadaslar-buketi",
+    "price": 520.00,
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   },
   {
     "id": "anne-baba-buketi",
     "price": 480.00,
-    "url": "/products.json"
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   },
   {
     "id": "otel-aranjmani",
     "price": 395.00,
-    "url": "/products.json"
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   },
   {
     "id": "ozel-gun-buketi",
     "price": 600.00,
-    "url": "/products.json"
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   },
   {
     "id": "romantik-koleksiyon",
     "price": 750.00,
-    "url": "/products.json"
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   },
   {
     "id": "butce-dostu",
     "price": 250.00,
-    "url": "/products.json"
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   },
   {
     "id": "luxury-paket",
     "price": 1250.00,
-    "url": "/products.json"
+    "url": "https://bespoke-tarsier-e8ee87.netlify.app/products.json"
   }
 ]
