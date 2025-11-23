@@ -12,16 +12,17 @@
 
   <header class="site-header">
     <div class="header-container">
-      <a href="/">
+      <a href="/" class="header-logo-link">
         <img class="logo" src="https://kemerbuket.com/wp-content/uploads/2025/11Gemini_Generated_Image_.png" alt="Kemer Buket Logo" />
       </a>
       <nav class="header-nav">
-        <a href="#catalog">Mağaza</a>
+        <a href="magaza.html">Mağaza</a>
         <a href="#contact">İletişim</a>
         
         <a href="#" class="snipcart-checkout">
           <img class="icon" src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Sepet" />
-          <span class="snipcart-items-count">0</span> </a>
+          <span class="snipcart-items-count">0</span> 
+        </a>
         
         <a href="https://www.instagram.com/flowerkemerantalya/" target="_blank">
           <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
@@ -34,7 +35,7 @@
     <div class="hero-text">
       <h1>Doğanın Zarafetini Keşfet</h1>
       <p>Her çiçek, bir hikaye anlatır. Kemer Buket ile özel anlarınıza zarafet katın.</p>
-      <a href="#catalog" class="hero-btn">Ürünleri Gör</a>
+      <a href="magaza.html" class="hero-btn">Koleksiyonu İncele</a>
     </div>
     <div class="hero-image">
       <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Çiçek buketi">
@@ -43,79 +44,48 @@
 
   <section id="catalog" class="catalog-section">
     <h2 class="catalog-title">Popüler Aranjmanlar</h2>
-    <p class="catalog-subtitle">Aranjmanlarınızı kategorilere göre seçin</p>
+    <p class="catalog-subtitle">Duygularınızı en iyi anlatan tasarımı seçin</p>
 
     <div class="catalog-row">
       
       <div class="catalog-item">
         <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80" alt="Pembe Rüya">
         <h3>Sevgililer İçin</h3>
-        <div class="price">₺450</div>
-        <button class="catalog-btn snipcart-add-item"
-          data-item-id="sevgililer-buketi"
-          data-item-price="450.00"
-          data-item-url="/"
-          data-item-description="Sevgililer günü için özel tasarım pembe güller."
-          data-item-image="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80"
-          data-item-name="Sevgililer İçin Buket">
-          Sepete Ekle
-        </button>
+        <a href="magaza.html?filter=sevgililer" class="catalog-btn">
+          Koleksiyonu Keşfet
+        </a>
       </div>
 
       <div class="catalog-item">
         <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=400&q=80" alt="Arkadaşlar İçin">
         <h3>Arkadaşlar İçin</h3>
-        <div class="price">₺520</div>
-        <button class="catalog-btn snipcart-add-item"
-          data-item-id="arkadaslar-buketi"
-          data-item-price="520.00"
-          data-item-url="/"
-          data-item-description="Dostlukları pekiştiren beyaz saflık."
-          data-item-image="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=400&q=80"
-          data-item-name="Arkadaşlar İçin Aranjman">
-          Sepete Ekle
-        </button>
+        <a href="magaza.html?filter=arkadaslar" class="catalog-btn">
+          Koleksiyonu Keşfet
+        </a>
       </div>
 
       <div class="catalog-item">
         <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80" alt="Anneler Babalar">
         <h3>Anneler & Babalar</h3>
-        <div class="price">₺480</div>
-        <button class="catalog-btn snipcart-add-item"
-          data-item-id="anne-baba-buketi"
-          data-item-price="480.00"
-          data-item-url="/"
-          data-item-description="Aile büyüklerine layık mor tutku."
-          data-item-image="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=400&q=80"
-          data-item-name="Anne & Baba Buketi">
-          Sepete Ekle
-        </button>
+        <a href="magaza.html?filter=aile" class="catalog-btn">
+          Koleksiyonu Keşfet
+        </a>
       </div>
 
       <div class="catalog-item">
         <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=400&q=80" alt="Otel">
-        <h3>Otel İşletmeleri</h3>
-        <div class="price">₺395</div>
-        <button class="catalog-btn snipcart-add-item"
-          data-item-id="otel-aranjmani"
-          data-item-price="395.00"
-          data-item-url="/"
-          data-item-name="Otel Karşılama Çiçeği">
-          Sepete Ekle
-        </button>
+        <h3>Kurumsal & Otel</h3>
+        <a href="magaza.html?filter=kurumsal" class="catalog-btn">
+          Koleksiyonu Keşfet
+        </a>
       </div>
 
        <div class="catalog-item">
         <img src="https://images.unsplash.com/photo-1502767089025-6572583495b2?auto=format&fit=crop&w=400&q=80" alt="Ozel Gunler">
         <h3>Özel Günler</h3>
-        <div class="price">₺600</div>
-        <button class="catalog-btn snipcart-add-item"
-          data-item-id="ozel-gun-buketi"
-          data-item-price="600.00"
-          data-item-url="/"
-          data-item-name="Özel Gün Buketi">
-          Sepete Ekle
-        </button>
+        <a href="magaza.html?filter=ozel-gun" class="catalog-btn">
+          Koleksiyonu Keşfet
+        </a>
       </div>
 
     </div>
@@ -124,39 +94,31 @@
   <section class="featured-section">
     <h2 class="catalog-title">Öne Çıkan Koleksiyonlar</h2>
     <div class="featured-row">
+      
       <div class="featured-item">
         <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="Romantik">
         <h3>Romantik Koleksiyon</h3>
-        <button class="catalog-btn snipcart-add-item"
-        data-item-id="romantik-koleksiyon"
-        data-item-price="750.00"
-        data-item-url="/"
-        data-item-name="Romantik Koleksiyon">
-        Sepete Ekle
-      </button>
+        <a href="magaza.html?filter=romantik" class="catalog-btn">
+            Detaylı İncele
+        </a>
       </div>
+
       <div class="featured-item">
         <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=600&q=80" alt="Butce Dostu">
         <h3>Bütçe Dostu</h3>
-        <button class="catalog-btn snipcart-add-item"
-        data-item-id="butce-dostu"
-        data-item-price="250.00"
-        data-item-url="/"
-        data-item-name="Bütçe Dostu Paket">
-        Sepete Ekle
-      </button>
+        <a href="magaza.html?filter=ekonomik" class="catalog-btn">
+            Detaylı İncele
+        </a>
       </div>
+
       <div class="featured-item">
         <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=600&q=80" alt="Luxury">
         <h3>Luxury Paket</h3>
-        <button class="catalog-btn snipcart-add-item"
-        data-item-id="luxury-paket"
-        data-item-price="1250.00"
-        data-item-url="/"
-        data-item-name="Luxury Paket">
-        Sepete Ekle
-      </button>
+        <a href="magaza.html?filter=luxury" class="catalog-btn">
+            Detaylı İncele
+        </a>
       </div>
+
     </div>
   </section>
 
@@ -164,18 +126,19 @@
     <div class="story-text">
       <h2>Biz Kimiz?</h2>
       <p>Kemer Buket, doğanın zarafetini modern tasarımla buluşturan bir çiçek atölyesidir. Her aranjman, sevgiyle hazırlanır.</p>
-      <a href="#" class="story-btn">Daha Fazlası</a>
+      <a href="magaza.html" class="story-btn">Hikayemiz</a>
     </div>
     <div class="story-image">
       <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=800&q=80" alt="Hakkımızda">
     </div>
   </section>
 
-  <section class="map-section">
+  <section id="contact" class="map-section">
     <h2 class="catalog-title">Bizi Nerede Bulabilirsiniz?</h2>
     <p class="catalog-subtitle">Kemer’in en nadide yeri ve kalbinde — <strong>Marina’da</strong> bulabilirsiniz bizi 🌸</p>
     <div class="map-container">
-      </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.669145244567!2d30.56064431528659!3d36.60548997998952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c3c7b7c5b1b1b1%3A0x1b1b1b1b1b1b1b1b!2sKemer%20Marina!5e0!3m2!1str!2str!4v1620000000000!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
   </section>
 
   <footer class="site-footer">
@@ -186,10 +149,9 @@
     window.SnipcartSettings = {
         publicApiKey: 'ZmRkY2Q0NTItNjM4NS00MDFmLTk4MTUtNjM2ODI2N2JjOTZlNjM4OTk0OTc3NDY0ODEwNjE5',
         loadStrategy: 'on-user-interaction',
-        currency: 'try', // Para birimi TL
-        modalStyle: 'side', // Sepet sağdan açılsın
+        currency: 'try',
+        modalStyle: 'side',
     };
-
     (()=>{var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var f=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,m=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(m.forEach(t=>document.addEventListener(t,o)),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],e=document.querySelector("#snipcart"),i=document.querySelector(`src[src^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][src$="snipcart.js"]`),n=document.querySelector(`link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`);e||(e=document.createElement("div"),e.id="snipcart",e.setAttribute("hidden","true"),document.body.appendChild(e)),v(e),i||(i=document.createElement("script"),i.src=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`,i.async=!0,t.appendChild(i)),n||(n=document.createElement("link"),n.rel="stylesheet",n.type="text/css",n.href=`${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.css`,t.prepend(n)),m.forEach(g=>document.removeEventListener(g,o))}function v(t){!f||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();
   </script>
 
