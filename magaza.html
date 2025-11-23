@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mağaza | Kemer Buket</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="header-logo-link">
+                <img class="logo" src="https://kemerbuket.com/wp-content/uploads/2025/11Gemini_Generated_Image_.png" alt="Kemer Buket Logo" />
+            </a>
+            <nav class="header-nav">
+                <a href="magaza.html" class="active-link">Mağaza</a>
+                <a href="index.html#contact">İletişim</a>
+                <a href="#" class="snipcart-checkout">
+                    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Sepet" />
+                    <span class="snipcart-items-count">0</span> 
+                    <span class="snipcart-total-price">0.00 ₺</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="store-hero">
+        <h1>Koleksiyonlar</h1>
+        <p>Size özel tasarlanmış, el yapımı aranjmanlar.</p>
+    </section>
+
+    <div class="container filter-container">
+        <button class="filter-btn active" onclick="filterSelection('all')">Tümü</button>
+        <button class="filter-btn" onclick="filterSelection('sevgililer')">Sevgililer</button>
+        <button class="filter-btn" onclick="filterSelection('arkadaslar')">Arkadaşlar</button>
+        <button class="filter-btn" onclick="filterSelection('aile')">Aile</button>
+        <button class="filter-btn" onclick="filterSelection('kurumsal')">Kurumsal</button>
+        <button class="filter-btn" onclick="filterSelection('luxury')">Luxury</button>
+    </div>
+
+    <section id="product-container" class="store-grid container">
+        <p style="text-align:center; width:100%; color:#888;">Vitrin Yükleniyor...</p>
+    </section>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                
+                <div class="modal-img-container">
+                    <div class="main-img-box">
+                        <img id="modalImage" src="" alt="Ürün Detay">
+                    </div>
+                    <div id="modalThumbnails" class="thumbnails-row"></div>
+                </div>
+                
+                <div class="modal-info">
+                    <h2 id="modalTitle">Ürün Adı</h2>
+                    <p id="modalDesc">Açıklama</p>
+                    
+                    <span id="modalDisplayPrice" class="modal-price">0 ₺</span>
+
+                    <div class="product-options">
+                        
+                        <div class="option-group">
+                            <label>Boyut Seçiniz:</label>
+                            <select id="sizeSelect" onchange="updateSnipcartButton()">
+                                <option value="Small">Small (Standart)</option>
+                                <option value="Medium">Medium (+500 TL)</option>
+                                <option value="Large">Large (+1000 TL)</option>
+                            </select>
+                        </div>
+
+                        <div class="option-group">
+                            <label>Teslimat Bölgesi:</label>
+                            <select id="locationSelect" onchange="updateSnipcartButton()">
+                                <option value="Merkez">Kemer Merkez (Ücretsiz)</option>
+                                <option value="Camyuva">Çamyuva (+150 TL)</option>
+                                <option value="Goynuk">Göynük (+150 TL)</option>
+                                <option value="Tekirova">Tekirova (+200 TL)</option>
+                                <option value="Beldibi">Beldibi (+250 TL)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="snipcartAddBtn" class="add-btn snipcart-add-item">
+                        Sepete Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        © 2025 Kemer Buket | Tüm hakları saklıdır.
+    </footer>
+
+    <div hidden id="snipcart" 
+         data-api-key="ZmRkY2Q0NTItNjM4NS00MDFmLTk4MTUtNjM2ODI2N2JjOTZlNjM4OTk0OTc3NDY0ODEwNjE5" 
+         data-config-modal-style="side"
+         data-currency="try"></div>
+         
+    <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
+
+    <script>
+        // SENİN GOOGLE TABLO LİNKİN (CSV FORMATINDA DÜZELTİLDİ)
+        const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT8NIcOYavKZjCcoBLlkM6Wk_rSedRcQGdcWY20W1ouirEFVPZUEWzTn9MvZrZtogCuREpww6G5g_7n/pub?output=csv"; 
+
+        let allProducts = [];
+        let currentProductIndex = 0;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            Papa.parse(sheetURL, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    allProducts = results.data;
+                    displayProducts(allProducts);
+                    const urlParams = new URLSearchParams(window.location.search);
+                    if (urlParams.get('filter')) filterSelection(urlParams.get('filter'));
+                }
+            });
+        });
+
+        function displayProducts(products) {
+            const container = document.getElementById('product-container');
+            container.innerHTML = ""; 
+
+            products.forEach((product, index) => {
+                if(!product.name) return;
+                const item = document.createElement('div');
+                item.className = `store-item filter-item ${product.category}`;
+                item.innerHTML = `
+                    <div class="img-box" onclick="openModal(${index})">
+                        <img src="${product.image}" onerror="this.src='https://via.placeholder.com/500x500?text=Resim+Yok'">
+                    </div>
+                    <div class="info-box">
+                        <h3 onclick="openModal(${index})">${product.name}</h3>
+                        <span class="store-price">${product.price} ₺</span>
+                        <button class="add-btn" onclick="openModal(${index})">İncele</button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+            filterSelection('all');
+        }
+
+        function openModal(index) {
+            currentProductIndex = index;
+            const product = allProducts[index];
+            const modal = document.getElementById("productModal");
+            
+            document.getElementById("modalImage").src = product.image;
+            document.getElementById("modalTitle").innerText = product.name;
+            document.getElementById("modalDesc").innerText = product.description || "Özel tasarım.";
+            
+            // Seçenekleri Sıfırla
+            document.getElementById("sizeSelect").selectedIndex = 0;
+            document.getElementById("locationSelect").selectedIndex = 0;
+
+            // Galeri
+            const thumbContainer = document.getElementById("modalThumbnails");
+            thumbContainer.innerHTML = "";
+            function createThumb(src) {
+                if(!src) return;
+                const img = document.createElement("img");
+                img.src = src;
+                img.className = "thumb-img";
+                img.onclick = () => document.getElementById("modalImage").src = src;
+                thumbContainer.appendChild(img);
+            }
+            createThumb(product.image);
+            createThumb(product.image2);
+            createThumb(product.image3);
+
+            updateSnipcartButton();
+            modal.style.display = "flex";
+        }
+
+        // --- SNIPCART BUTONUNU GÜNCELLEME SİSTEMİ ---
+        function updateSnipcartButton() {
+            const product = allProducts[currentProductIndex];
+            const btn = document.getElementById("snipcartAddBtn");
+            const priceLabel = document.getElementById("modalDisplayPrice");
+
+            // Seçilen Değerler
+            const sizeSelect = document.getElementById("sizeSelect");
+            const selectedSize = sizeSelect.value; 
+
+            const locSelect = document.getElementById("locationSelect");
+            const selectedLoc = locSelect.value; 
+
+            // Fiyat Gösterimi (Görsel Hesaplama)
+            let currentPrice = parseFloat(product.price);
+            if(selectedSize === "Medium") currentPrice += 500;
+            if(selectedSize === "Large") currentPrice += 1000;
+            if(selectedLoc === "Camyuva" || selectedLoc === "Goynuk") currentPrice += 150;
+            if(selectedLoc === "Tekirova") currentPrice += 200;
+            if(selectedLoc === "Beldibi") currentPrice += 250;
+
+            priceLabel.innerText = currentPrice + " ₺";
+
+            // SNIPCART ATTRIBUTE'LARINI DOLDUR
+            btn.dataset.itemId = product.id;
+            btn.dataset.itemName = product.name;
+            btn.dataset.itemPrice = product.price; // Snipcart baz fiyatı
+            btn.dataset.itemUrl = "/magaza.html"; // Snipcart doğrulama URL'si
+            btn.dataset.itemImage = product.image;
+            btn.dataset.itemDescription = product.description;
+
+            // ÖZEL ALAN 1: BOYUT (Otomatik Fiyat Ekler)
+            btn.dataset.itemCustom1Name = "Boyut";
+            btn.dataset.itemCustom1Options = "Small|Medium[+500]|Large[+1000]";
+            btn.dataset.itemCustom1Value = selectedSize;
+
+            // ÖZEL ALAN 2: BÖLGE (Otomatik Fiyat Ekler)
+            btn.dataset.itemCustom2Name = "Teslimat Bölgesi";
+            btn.dataset.itemCustom2Options = "Merkez|Camyuva[+150]|Goynuk[+150]|Tekirova[+200]|Beldibi[+250]";
+            btn.dataset.itemCustom2Value = selectedLoc;
+        }
+
+        function closeModal() { document.getElementById("productModal").style.display = "none"; }
+        window.onclick = function(e) { if(e.target == document.getElementById("productModal")) closeModal(); }
+
+        function filterSelection(c) {
+            var x = document.getElementsByClassName("store-item");
+            if (c == "all") c = "";
+            for (var i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+            var btns = document.getElementsByClassName("filter-btn");
+            for (var j = 0; j < btns.length; j++) {
+                btns[j].classList.remove("active");
+                if(btns[j].getAttribute("onclick").includes(c || 'all')) btns[j].classList.add("active");
+            }
+        }
+        function w3AddClass(element, name) {
+            var arr1 = element.className.split(" ");
+            var arr2 = name.split(" ");
+            for (var i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            }
+        }
+        function w3RemoveClass(element, name) {
+            var arr1 = element.className.split(" ");
+            var arr2 = name.split(" ");
+            for (var i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+            element.className = arr1.join(" ");
+        }
+    </script>
+</body>
+</html>
