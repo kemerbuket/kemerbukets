@@ -1,4 +1,12 @@
 [
+
+    {
+    "id": "test-urun-01",
+    "price": 1.00,
+    "url": "/products.json"
+  },
+
+
   {
     "id": "gul-01",
     "price": 1500.00,
