@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
             return {
                 id: product.id,
                 price: parseFloat(product.price),
-                url: "/.netlify/functions/products", // Kendini referans gösterir
+                url: "http://bespoke-tarsier-e8ee87.netlify.app/.netlify/functions/products",
                 name: product.name,
                 description: product.description,
                 image: product.image
