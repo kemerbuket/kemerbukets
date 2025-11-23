@@ -18,10 +18,24 @@ exports.handler = async (event, context) => {
             return {
                 id: product.id,
                 price: parseFloat(product.price),
+                // BURAYA DİKKAT: HTTPS OLMALI
                 url: "https://bespoke-tarsier-e8ee87.netlify.app/.netlify/functions/products",
                 name: product.name,
                 description: product.description,
-                image: product.image
+                image: product.image,
+                // İŞTE EKSİK OLAN PARÇA BU:
+                customFields: [
+                    {
+                        name: "Boyut",
+                        options: "Small|Medium[+500]|Large[+1000]",
+                        type: "dropdown"
+                    },
+                    {
+                        name: "Teslimat Bölgesi",
+                        options: "Merkez|Camyuva[+150]|Goynuk[+150]|Tekirova[+200]|Beldibi[+250]",
+                        type: "dropdown"
+                    }
+                ]
             };
         }).filter(p => p.id && p.price); // Boş satırları temizle
 
@@ -29,7 +43,7 @@ exports.handler = async (event, context) => {
             statusCode: 200,
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*' // Her yerden erişime izin ver
+                'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify(snipcartProducts)
         };
